@@ -1,63 +1,85 @@
 #include <Servo.h> 
  
-Servo middle, left, right, claw ;  // creates 4 "servo objects"
+Servo middle, left, right, claw ;  // creating 4 "servo objects"
 
-int N = 1;
-int runXTimes = 0;
-int pos = 0;
+int N = 1; // number of times we want the robot to move
+int counter = 0; // will increase by 1 after every loop
+int pos = 0; // position of servo
  
-void setup() 
-{ 
-  Serial.begin(9600);
-  middle.attach(9);  // attaches the servo on pin 11 to the middle object
-  left.attach(6);  // attaches the servo on pin 10 to the left object
-  right.attach(5);  // attaches the servo on pin 9 to the right object
-  claw.attach(3);  // attaches the servo on pin 6 to the claw object
+void setup() // attach servos to pins and set initial position
 
-  middle.write(90); // sets the servo position according to the value(degrees)
-  left.write(100); // does the same
-  right.write(100); // and again
-  claw.write(60); // yes you've guessed it
-  delay(2000); // doesn't constantly update the servos which can fry them
+{
+  Serial.begin(9600); // do we need this???
+  
+  // attaching servos to pins
+  middle.attach(9);  // rotation
+  left.attach(6);  // left servo, forward movement, should be same as "right"
+  right.attach(5);  // right servo, forward movement, should be same as "left"
+  claw.attach(3);  // claw
+
+  // roboarm initial position
+  middle.write(90);
+  left.write(100);
+  right.write(100);
+  claw.write(60);
+  delay(1500); // wait 1.5 seconds
 } 
  
-void loop() 
+void loop() // turn left, extend the arm and pick up the piece
+ 
 { 
-  if (runXTimes < N)
+  if (counter < N) // N times the robot will move
  {
-    // turn left, extend the arm and pick up the piece
+    
+    // turn left
     for (pos = 90; pos <= 150; pos += 1) {
-    middle.write(pos);
-    delay(15);
+      middle.write(pos);
+      delay(15);
+    }
+    
+    delay(1000);
+
+    // open claw
+    for (pos = 60; pos <= 140; pos += 1) {
+      claw.write(pos);
+      delay(15);
     }
 
     delay(1000);
-    claw.write(150); // open claw
-    delay(1000);
-    
+
+    // extend arm
     for (pos = 100; pos <= 150; pos += 1) {
-    left.write(pos);
-    right.write(pos);
-    delay(15);
+      left.write(pos);
+      right.write(pos);
+      delay(15);
     }
-    delay(2000);
-  
-    claw.write(70);
-    delay(1000);
-
-    for (pos = 150; pos >= 100; pos -= 1) {
-    left.write(pos);
-    right.write(pos);
-    delay(15);
-  }
     
     delay(1000);
 
-    for (pos = 150; pos >= 90; pos -= 1) {
-    middle.write(pos);
-    delay(15);
+    // close claw and pick up the object
+    for (pos = 140; pos >= 70; pos -= 1) {
+      claw.write(pos);
+      delay(15);
     }
-    runXTimes++;
+    
+    delay(1000);
+
+    // retract arm
+    for (pos = 150; pos >= 100; pos -= 1) {
+      left.write(pos);
+      right.write(pos);
+      delay(15);
+    }
+    
+    delay(1000);
+
+    // turn right to the middle position
+    for (pos = 150; pos >= 90; pos -= 1) {
+      middle.write(pos);
+      delay(15);
+    }
+    
+    counter++; // increase counter by 1
  }
   
 }
