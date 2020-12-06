@@ -12,10 +12,10 @@ void setup() // attach servos to pins and set initial position
   Serial.begin(9600); // do we need this???
   
   // attaching servos to pins
-  middle.attach(9);  // rotation
-  left.attach(6);  // left servo, forward movement, should be same as "right"
-  right.attach(5);  // right servo, forward movement, should be same as "left"
-  claw.attach(3);  // claw
+  middle.attach(8);  // rotation
+  left.attach(9);  // left servo, forward movement, should be same as "right"
+  right.attach(10);  // right servo, forward movement, should be same as "left"
+  claw.attach(11);  // claw
 
   // roboarm initial position
   middle.write(90);

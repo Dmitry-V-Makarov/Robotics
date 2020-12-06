@@ -1,5 +1,5 @@
-#define HANDLE A0
-#define LED 6
+#define HANDLE A4
+#define LED 10
 
 #include <Servo.h>
 Servo myservo;
