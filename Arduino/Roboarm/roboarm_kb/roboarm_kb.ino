@@ -42,7 +42,7 @@ void loop()
       delay(15);//delay for the servo to get to the position
     }
 
-    // front 1
+    // joint 1
     if (val == 'w') //if value input is equals to d
     {
       pos_f1 += 1; //than position of servo motor increases by 1 ( anti clockwise)
