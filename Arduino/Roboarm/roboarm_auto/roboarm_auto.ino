@@ -9,20 +9,24 @@ int pos = 0; // position of servo
 void setup() // attach servos to pins and set initial position
 
 {
-  Serial.begin(9600); // do we need this???
+  Serial.begin(9600); // initialize serial connection
   
   // attaching servos to pins
-  middle.attach(8);  // rotation
-  left.attach(9);  // left servo, forward movement, should be same as "right"
-  right.attach(10);  // right servo, forward movement, should be same as "left"
-  claw.attach(11);  // claw
+  middle.attach(9);  // rotation
+  left.attach(6);  // left servo, forward movement, should be same as "right"
+  right.attach(5);  // right servo, forward movement, should be same as "left"
+  claw.attach(3);  // claw
 
   // roboarm initial position
   middle.write(90);
   left.write(100);
   right.write(100);
   claw.write(60);
-  delay(1500); // wait 1.5 seconds
+  
+  // status
+  Serial.println("Roboarm ready");
+  
+  delay(2000); // wait 2 seconds
 } 
  
 void loop() // turn left, extend the arm and pick up the piece
@@ -64,7 +68,7 @@ void loop() // turn left, extend the arm and pick up the piece
     
     delay(1000);
 
-    // retract arm
+    // retract arm: split them!!!!
     for (pos = 150; pos >= 100; pos -= 1) {
       left.write(pos);
       right.write(pos);
