@@ -2,15 +2,12 @@
 //        RemoteXY include library         // 
 ///////////////////////////////////////////// 
 
-// RemoteXY select connection mode and include library 
-#define REMOTEXY_MODE__SOFTSERIAL
-#include <SoftwareSerial.h>
+/* RemoteXY select connection mode and include library */ 
+#define REMOTEXY_MODE__SERIAL 
+#include <RemoteXY.h> 
 
-#include <RemoteXY.h>
-
-// RemoteXY connection settings 
-#define REMOTEXY_SERIAL_RX 12
-#define REMOTEXY_SERIAL_TX 13
+/* RemoteXY connection settings */ 
+#define REMOTEXY_SERIAL Serial 
 #define REMOTEXY_SERIAL_SPEED 9600 
 
 // RemoteXY configurate  
