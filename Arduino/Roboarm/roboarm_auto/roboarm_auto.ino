@@ -5,6 +5,8 @@ Servo middle, fwd, up, claw ;  // creating 4 "servo objects"
 int N = 1; // number of times we want the robot to move
 int counter = 0; // will increase by 1 after every loop
 int pos = 0; // position of servo
+int spd = 20;
+int ps = 1000;
  
 void setup() // attach servos to pins and set initial position
 
@@ -43,117 +45,119 @@ void loop() // turn left, extend the arm and pick up the piece
     // turn left
     for (pos = 94; pos <= 125; pos += 1) {
       middle.write(pos);
-      delay(15);
+      delay(spd);
     }
     
-    delay(1000);
+    delay(ps);
 
     // open claw
     for (pos = 94; pos <= 120; pos += 1) {
       claw.write(pos);
-      delay(15);
+      delay(spd);
     }
 
-    delay(1000);
+    delay(ps);
 
     // move up
     for (pos = 100; pos <= 145; pos += 1) {
       up.write(pos);
-      delay(15);
+      delay(spd);
     }
 
-    delay(1000);
+    delay(ps);
 
     // move fwd
-    for (pos = 100; pos <= 145; pos += 1) {
+    for (pos = 100; pos <= 153; pos += 1) {
       fwd.write(pos);
-      delay(15);
+      delay(spd);
     }
     
-    delay(1000);
+    delay(ps);
 
     // close claw and pick up the object
     for (pos = 120; pos >= 94; pos -= 1) {
       claw.write(pos);
-      delay(15);
+      delay(spd);
     }
     
-    delay(1000);
+    delay(ps);
 
     // move up to transportation pos
     for (pos = 145; pos <= 160; pos += 1) {
       up.write(pos);
-      delay(15);
+      delay(spd);
     }
     
-    delay(1000);
+    delay(ps);
 
     // retract arm
-    for (pos = 145; pos >= 80; pos -= 1) {
+    for (pos = 153; pos >= 80; pos -= 1) {
       fwd.write(pos);
-      delay(15);
+      delay(spd);
     }
     
-    delay(1000);
+    delay(ps);
 
     // turn right to the leaving pos
     for (pos = 130; pos >= 60; pos -= 1) {
       middle.write(pos);
-      delay(15);
+      delay(spd);
     }
 
-    // move down
-    for (pos = 160; pos >= 150; pos -= 1) {
-      up.write(pos);
-      delay(15);
-    }
-
-    delay(1000);
+    delay(ps);
 
     // move fwd
     for (pos = 80; pos <= 140; pos += 1) {
       fwd.write(pos);
-      delay(15);
+      delay(spd);
     }
 
-    delay(1000);
+    delay(ps);
+
+    // move down
+    for (pos = 160; pos >= 150; pos -= 1) {
+      up.write(pos);
+      delay(spd);
+    }
+
+    delay(ps);
 
     // open claw and drop object
     for (pos = 94; pos <= 120; pos += 1) {
       claw.write(pos);
-      delay(15);
+      delay(spd);
     }
 
-    delay(1000);
-
-    // move down to initial
-    for (pos = 150; pos >= 100; pos -= 1) {
-      up.write(pos);
-      delay(15);
-    }
-    
-    delay(1000);
+    delay(ps);
 
     // retract arm
     for (pos = 140; pos >= 100; pos -= 1) {
       fwd.write(pos);
-      delay(15);
+      delay(spd);
     }
     
-    delay(1000);
+    delay(ps);
+
+    // move down to initial
+    for (pos = 150; pos >= 100; pos -= 1) {
+      up.write(pos);
+      delay(spd);
+    }
+    
+    delay(ps);
 
     // close claw
     for (pos = 120; pos >= 94; pos -= 1) {
       claw.write(pos);
-      delay(15);
+      delay(spd);
     }
     
-    delay(1000);
+    delay(ps);
 
     // turn left
     for (pos = 60; pos <= 94; pos += 1) {
       middle.write(pos);
-      delay(15);
+      delay(spd);
     }
 
     
