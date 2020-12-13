@@ -42,8 +42,8 @@ void setup()
   RemoteXY_Init ();  
      
   // TODO you setup code 
-  myservo.attach(9); 
-  RemoteXY.slider_base = 50; 
+  servo_base.attach(6); 
+  RemoteXY.slider_base = 50;
    
 } 
 

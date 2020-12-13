@@ -11,7 +11,7 @@ int pos_c = 60;
 void setup() 
 { 
   Serial.begin(9600);
-  middle.attach(8);  // attaches the servo on pin 11 to the middle object
+  middle.attach(6);  // attaches the servo on pin 11 to the middle object
   left.attach(9);  // attaches the servo on pin 10 to the left object
   right.attach(10);  // attaches the servo on pin 9 to the right object
   claw.attach(11);  // attaches the servo on pin 6 to the claw object
