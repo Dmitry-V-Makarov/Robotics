@@ -2,7 +2,7 @@
 int Trig;
 int Echo;
 //=Режим пинов/портов ===============================
-Sonar_init(int Tr, int Ec)
+int Sonar_init(int Tr, int Ec)
 {
    Trig=Tr;
    Echo=Ec;

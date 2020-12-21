@@ -5,11 +5,11 @@ void move_case(char bt_input)
 {
   switch (bt_input) {
     // Вперед
-    case 'F':
+    case 'B':
       forward();
       break;
     // Назад
-    case 'B':
+    case 'F':
       backward();
       break;
     // Влево
@@ -94,4 +94,3 @@ void move_case(char bt_input)
       break;
   }
 }
-
